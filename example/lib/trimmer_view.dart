@@ -68,6 +68,7 @@ class _TrimmerViewState extends State<TrimmerView> {
                         ? null
                         : () async {
                             _saveVideo().then((outputPath) {
+
                               print('OUTPUT PATH: $outputPath');
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
@@ -85,7 +86,7 @@ class _TrimmerViewState extends State<TrimmerView> {
                     child: TrimEditor(
                       viewerHeight: 50.0,
                       viewerWidth: MediaQuery.of(context).size.width,
-                      maxVideoLength: Duration(seconds: 10),
+                      maxVideoLength: Duration(seconds: 30),
                       onChangeStart: (value) {
                         _startValue = value;
                       },

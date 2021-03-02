@@ -84,7 +84,7 @@ packages:
       name: flutter_ffmpeg
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "0.3.1"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -136,7 +136,7 @@ packages:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.24"
+    version: "1.6.27"
   path_provider_linux:
     dependency: transitive
     description:

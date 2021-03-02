@@ -293,9 +293,9 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
             if (!(_startPos.dx + details.delta.dx < 0))
               _startPos += details.delta;
 
-            _startFraction = (_startPos.dx / _thumbnailViewerW);
+            _startFraction = (_startPos.dx / _thumbnailViewerW).toDouble();
 
-            _videoStartPos = _videoDuration * _startFraction;
+            _videoStartPos = (_videoDuration * _startFraction).toDouble();
             widget.onChangeStart(_videoStartPos);
           });
           await videoPlayerController.pause();
@@ -311,9 +311,9 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
           if (!(_startPos.dx + details.delta.dx < 0))
             _startPos += details.delta;
 
-          _startFraction = (_startPos.dx / _thumbnailViewerW);
+          _startFraction = (_startPos.dx / _thumbnailViewerW).toDouble();
 
-          _videoStartPos = _videoDuration * _startFraction;
+          _videoStartPos = (_videoDuration * _startFraction).toDouble();
           widget.onChangeStart(_videoStartPos);
         });
         await videoPlayerController.pause();
@@ -335,9 +335,9 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
         if (!(_endPos.dx - _startPos.dx + details.delta.dx > maxLengthPixels)) {
           setState(() {
             _endPos += details.delta;
-            _endFraction = _endPos.dx / _thumbnailViewerW;
+            _endFraction = (_endPos.dx / _thumbnailViewerW).toDouble();
 
-            _videoEndPos = _videoDuration * _endFraction;
+            _videoEndPos = (_videoDuration * _endFraction).toDouble();
             widget.onChangeEnd(_videoEndPos);
           });
           await videoPlayerController.pause();
@@ -351,9 +351,9 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
       } else {
         setState(() {
           _endPos += details.delta;
-          _endFraction = _endPos.dx / _thumbnailViewerW;
+          _endFraction = (_endPos.dx / _thumbnailViewerW).toDouble();
 
-          _videoEndPos = _videoDuration * _endFraction;
+          _videoEndPos = (_videoDuration * _endFraction).toDouble();
           widget.onChangeEnd(_videoEndPos);
         });
         await videoPlayerController.pause();
@@ -385,7 +385,7 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
         widget.maxVideoLength < totalDuration) {
       if (widget.maxVideoLength < totalDuration) {
         fraction =
-            widget.maxVideoLength.inMilliseconds / totalDuration.inMilliseconds;
+        (widget.maxVideoLength.inMilliseconds / totalDuration.inMilliseconds).toDouble();
 
         maxLengthPixels = _thumbnailViewerW * fraction;
       }
