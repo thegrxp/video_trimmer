@@ -74,10 +74,12 @@ packages:
   file_picker:
     dependency: "direct main"
     description:
-      name: file_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.4"
+      path: "."
+      ref: master
+      resolved-ref: "7c24fba9e875cbccfbc51d54d963800065967fd8"
+      url: "git://github.com/miguelpruivo/flutter_file_picker.git"
+    source: git
+    version: "2.1.6"
   flutter:
     dependency: "direct main"
     description: flutter
