@@ -401,6 +401,7 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
     _linearTween = Tween(begin: _startPos.dx, end: _endPos.dx);
 
     _animationController = AnimationController(
+      vsync: this,
       duration: Duration(milliseconds: (_videoEndPos - _videoStartPos).toInt()),
     );
 
