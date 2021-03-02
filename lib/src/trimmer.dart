@@ -24,7 +24,7 @@ class Trimmer {
   /// Loads a video using the path provided.
   ///
   /// Returns the loaded video file.
-  Future<void> loadVideo({@required File videoFile}) async {
+  Future<bool> loadVideo({@required File videoFile}) async {
     currentVideoFile = videoFile;
     try {
       if (currentVideoFile != null) {
@@ -36,16 +36,12 @@ class Trimmer {
             // currentVideoFile: currentVideoFile,
           );
         });
-        // TrimEditor(
-        //   viewerHeight: 50,
-        //   viewerWidth: 50.0 * 8,
-        //   // currentVideoFile: currentVideoFile,
-        // );
+        return true;
       } else {
-        return null;
+        return false;
       }
-    } catch(e) {
-      return null;
+    } catch (e) {
+      return false;
     }
   }
 
