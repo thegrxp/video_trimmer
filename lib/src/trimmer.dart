@@ -26,20 +26,26 @@ class Trimmer {
   /// Returns the loaded video file.
   Future<void> loadVideo({@required File videoFile}) async {
     currentVideoFile = videoFile;
-    if (currentVideoFile != null) {
-      videoPlayerController = VideoPlayerController.file(currentVideoFile);
-      await videoPlayerController.initialize().then((_) {
-        TrimEditor(
-          viewerHeight: 50,
-          viewerWidth: 50.0 * 8,
-          // currentVideoFile: currentVideoFile,
-        );
-      });
-      // TrimEditor(
-      //   viewerHeight: 50,
-      //   viewerWidth: 50.0 * 8,
-      //   // currentVideoFile: currentVideoFile,
-      // );
+    try {
+      if (currentVideoFile != null) {
+        videoPlayerController = VideoPlayerController.file(currentVideoFile);
+        await videoPlayerController.initialize().then((_) {
+          TrimEditor(
+            viewerHeight: 50,
+            viewerWidth: 50.0 * 8,
+            // currentVideoFile: currentVideoFile,
+          );
+        });
+        // TrimEditor(
+        //   viewerHeight: 50,
+        //   viewerWidth: 50.0 * 8,
+        //   // currentVideoFile: currentVideoFile,
+        // );
+      } else {
+        return null;
+      }
+    } catch(e) {
+      return null;
     }
   }
 
