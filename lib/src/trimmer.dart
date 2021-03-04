@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter_ffmpeg/stream_information.dart';
 import 'package:path/path.dart';
 
 import 'package:flutter/material.dart';
