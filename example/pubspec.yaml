@@ -15,7 +15,7 @@ dependencies:
     path: ../
 
   cupertino_icons: ^1.0.2
-  video_player: ^1.0.1
+  video_player: ^2.0.2
   file_picker: ^3.0.0
 
 dev_dependencies:
