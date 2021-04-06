@@ -14,11 +14,11 @@ class ThumbnailViewer extends StatelessWidget {
   /// For showing the thumbnails generated from the video,
   /// like a frame by frame preview
   ThumbnailViewer({
-    @required this.videoFile,
-    @required this.videoDuration,
-    @required this.thumbnailHeight,
-    @required this.numberOfThumbnails,
-    @required this.fit,
+    required this.videoFile,
+    required this.videoDuration,
+    required this.thumbnailHeight,
+    required this.numberOfThumbnails,
+    required this.fit,
     this.quality = 75,
   })  : assert(videoFile != null),
         assert(videoDuration != null),
@@ -27,24 +27,24 @@ class ThumbnailViewer extends StatelessWidget {
         assert(quality != null);
 
   Stream<List<Uint8List>> generateThumbnail() async* {
-    final String _videoPath = videoFile.path;
+    final String? _videoPath = videoFile.path;
 
-    double _eachPart = videoDuration / numberOfThumbnails;
+    double? _eachPart = videoDuration / numberOfThumbnails;
 
-    List<Uint8List> _byteList = [];
+    List<Uint8List?> _byteList = [];
 
     for (int i = 1; i <= numberOfThumbnails; i++) {
-      Uint8List _bytes;
+      Uint8List? _bytes;
       _bytes = await VideoThumbnail.thumbnailData(
-        video: _videoPath,
+        video: _videoPath!,
         imageFormat: ImageFormat.JPEG,
-        timeMs: (_eachPart * i).toInt(),
+        timeMs: (_eachPart! * i).toInt(),
         quality: quality,
       );
 
       _byteList.add(_bytes);
 
-      yield _byteList;
+      yield _byteList as List<Uint8List>;
     }
   }
 
@@ -54,15 +54,15 @@ class ThumbnailViewer extends StatelessWidget {
       stream: generateThumbnail(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Uint8List> _imageBytes = snapshot.data;
+          List<Uint8List>? _imageBytes = snapshot.data as List<Uint8List>?;
           return ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: snapshot.data.length,
+              itemCount: (snapshot.data as List<Uint8List>).length,
               itemBuilder: (context, index) {
                 return Container(
                   height: thumbnailHeight,
                   width: thumbnailHeight,
-                  child: _image(_imageBytes, index),
+                  child: _image(_imageBytes!, index),
                 );
               });
         } else {
